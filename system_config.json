@@ -1,0 +1,17 @@
+{
+    "system_analysis": {
+        "ram_gb": 16,
+        "cpu_cores": 8,
+        "gpu_type": "Apple Silicon (M1/M2/M3)",
+        "gpu_vram_gb": 0
+    },
+    "recommended_settings": {
+        "model": "codellama:7b",
+        "max_tokens": 3072,
+        "temperature": 0.8
+    },
+    "performance_expectations": {
+        "first_response_time": "5-15 seconds",
+        "subsequent_response_time": "2-5 seconds"
+    }
+}

@@ -208,7 +208,7 @@ get_model_selection() {
     SELECTED_MODELS=()
     for num in $SELECTED_NUMBERS; do
         case $num in
-            1) SELECTED_MODELS+=("llama3.2:3b") ;;
+            1) SELECTED_MODELS+=("llama3.2:3b") ;;      # ✅ Verified
             2) SELECTED_MODELS+=("llama3.2:1b") ;;
             3) SELECTED_MODELS+=("phi3:mini") ;;
             4) SELECTED_MODELS+=("gemma2:2b") ;;
@@ -216,12 +216,12 @@ get_model_selection() {
             6) SELECTED_MODELS+=("llama3.2:8b") ;;
             7) SELECTED_MODELS+=("llama3.1:8b") ;;
             8) SELECTED_MODELS+=("mistral:7b") ;;
-            9) SELECTED_MODELS+=("codellama:7b") ;;
+            9) SELECTED_MODELS+=("codellama:7b") ;;     # ✅ Verified
             10) SELECTED_MODELS+=("qwen2.5:7b") ;;
             11) SELECTED_MODELS+=("llama3.2:14b") ;;
             12) SELECTED_MODELS+=("llama3.1:14b") ;;
             13) SELECTED_MODELS+=("mistral:14b") ;;
-            14) SELECTED_MODELS+=("gpt-oss:20b") ;;
+            14) SELECTED_MODELS+=("gpt-oss:20b") ;;     # ✅ Verified
             15) SELECTED_MODELS+=("codellama:13b") ;;
             16) SELECTED_MODELS+=("codellama:34b") ;;
             17) SELECTED_MODELS+=("neural-chat:7b") ;;
@@ -283,7 +283,7 @@ show_all_models_numbered() {
     echo ""
     
     echo "🟢 EXCELLENT (2-4GB) - Fast, stays loaded:"
-    echo "   1. llama3.2:3b     (2.1GB) - Fast, good quality"
+    echo "   1. llama3.2:3b     (2.0GB) - Fast, good quality ✅"
     echo "   2. llama3.2:1b     (0.8GB) - Very fast, basic"
     echo "   3. phi3:mini       (1.8GB) - Microsoft's efficient"
     echo "   4. gemma2:2b       (1.4GB) - Google's lightweight"
@@ -294,7 +294,7 @@ show_all_models_numbered() {
     echo "   6. llama3.2:8b     (4.7GB) - Excellent quality"
     echo "   7. llama3.1:8b     (4.7GB) - Stable, well-tested"
     echo "   8. mistral:7b      (4.1GB) - Great performance"
-    echo "   9. codellama:7b    (4.1GB) - Excellent for coding"
+    echo "   9. codellama:7b    (3.8GB) - Excellent for coding ✅"
     echo "   10. qwen2.5:7b     (4.7GB) - Good balance"
     echo ""
     
@@ -302,7 +302,7 @@ show_all_models_numbered() {
     echo "   11. llama3.2:14b   (7.8GB) - High quality"
     echo "   12. llama3.1:14b   (7.8GB) - Complex tasks"
     echo "   13. mistral:14b    (7.8GB) - Better reasoning"
-    echo "   14. gpt-oss:20b    (13GB)  - Largest available"
+    echo "   14. gpt-oss:20b    (13GB)  - Largest available ✅"
     echo ""
     
     echo "🟣 SPECIALIZED - Domain-specific:"
@@ -369,15 +369,15 @@ for model in "${SELECTED_MODELS[@]}"; do
     else
         MODELS_TO_DOWNLOAD+=("$model")
         
-        # Calculate size for this model
+        # Calculate size for this model (updated with actual sizes)
         if [[ $model == *":1b" ]]; then
             MODEL_SIZE=0.8
         elif [[ $model == *":2b" ]]; then
             MODEL_SIZE=1.4
         elif [[ $model == *":3b" ]]; then
-            MODEL_SIZE=2.1
+            MODEL_SIZE=2.0  # Updated: llama3.2:3b is actually 2.0GB
         elif [[ $model == *":7b" ]]; then
-            MODEL_SIZE=4.1
+            MODEL_SIZE=3.8  # Updated: codellama:7b is actually 3.8GB
         elif [[ $model == *":8b" ]]; then
             MODEL_SIZE=4.7
         elif [[ $model == *":13b" ]]; then
@@ -385,7 +385,7 @@ for model in "${SELECTED_MODELS[@]}"; do
         elif [[ $model == *":14b" ]]; then
             MODEL_SIZE=7.8
         elif [[ $model == *":20b" ]]; then
-            MODEL_SIZE=13
+            MODEL_SIZE=13   # Verified: gpt-oss:20b is 13GB
         elif [[ $model == *":34b" ]]; then
             MODEL_SIZE=19
         else
@@ -499,7 +499,7 @@ else
 fi
 echo ""
 print_status "Next Steps:"
-echo "   1. Start the web UI: ./start_webui.sh"
+    echo "   1. Start the web UI: python chat_ui.py"
 echo "   2. Open http://localhost:7860 in your browser"
 echo "   3. Start chatting with your local AI!"
 echo ""
